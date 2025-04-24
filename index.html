@@ -7,7 +7,6 @@
   <meta name="description" content="The most unhelpful GPT bot on Solana. Pure chaos, 0 IQ, 100% memes.">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <style>
     body {
       margin: 0;
@@ -24,8 +23,6 @@
     h1 {
       font-size: 28px;
       margin: 0;
-      text-shadow: 0 0 10px #00ff88;
-      animation: glow 2s infinite alternate;
     }
     h2 {
       font-size: 16px;
@@ -42,11 +39,6 @@
       border-radius: 5px;
       cursor: pointer;
       font-size: 12px;
-      transition: all 0.3s;
-    }
-    .connect-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #00ff88;
     }
     .section {
       padding: 40px 20px;
@@ -61,11 +53,6 @@
       border-radius: 5px;
       text-decoration: none;
       font-size: 14px;
-      transition: all 0.3s;
-    }
-    .button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
     }
     .tokenomics {
       display: grid;
@@ -77,23 +64,12 @@
       background: #222;
       padding: 20px;
       border-radius: 10px;
-      transition: all 0.3s;
-    }
-    .tokenomics div:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #00ff88;
     }
     img.meme {
       max-width: 100%;
       height: auto;
       margin: 20px 0;
       border: 2px solid #00ff88;
-      border-radius: 10px;
-      transition: all 0.3s;
-    }
-    img.meme:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 20px #00ff88;
     }
     #chat-container {
       max-width: 500px;
@@ -161,64 +137,6 @@
       color: #00ff88;
       word-wrap: break-word;
     }
-    .buy-section {
-      background: #111;
-      padding: 30px;
-      border-radius: 15px;
-      margin: 30px auto;
-      max-width: 600px;
-      border: 3px solid #00ff88;
-    }
-    .buy-now {
-      background: #00ff88;
-      color: #000;
-      font-size: 24px;
-      padding: 15px 30px;
-      margin: 20px 0;
-      border-radius: 10px;
-      animation: pulse 2s infinite;
-    }
-    .counter {
-      font-size: 18px;
-      margin: 15px 0;
-    }
-    .qr-code {
-      background: white;
-      padding: 15px;
-      border-radius: 10px;
-      display: inline-block;
-      margin: 15px 0;
-    }
-    @keyframes glow {
-      from {
-        text-shadow: 0 0 5px #00ff88;
-      }
-      to {
-        text-shadow: 0 0 15px #00ff88, 0 0 20px #00ff88;
-      }
-    }
-    @keyframes pulse {
-      0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7);
-      }
-      70% {
-        transform: scale(1.05);
-        box-shadow: 0 0 0 15px rgba(0, 255, 136, 0);
-      }
-      100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(0, 255, 136, 0);
-      }
-    }
-    .floating {
-      animation: floating 3s ease-in-out infinite;
-    }
-    @keyframes floating {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-15px); }
-      100% { transform: translateY(0px); }
-    }
   </style>
 </head>
 <body>
@@ -226,27 +144,13 @@
 <header>
   <h1>$TRGPT - TrollGPT</h1>
   <h2>The dumbest AI ever made. Now on Solana.</h2>
-  <div class="connect-btn" onclick="connectWallet()"><i class="fa-brands fa-phantom"></i> Connect Wallet</div>
+  <div class="connect-btn" onclick="openModal()"><i class="fa-brands fa-phantom"></i> Connect Wallet</div>
 </header>
 
 <div class="section">
   <h2>Who the hell is Troll GPT?</h2>
   <p>Troll GPT the degenerate cousin of ChatGPT. He yells, insults, gives financial advice that would bankrupt a monkey, and still somehow moons.</p>
-  
-  <div class="buy-section floating">
-    <h2>BUY $TRGPT NOW</h2>
-    <div class="counter">
-      <i class="fas fa-users"></i> Holders: <span id="holder-count">Loading...</span>
-    </div>
-    <a href="https://pump.fun/" class="buy-now" target="_blank">
-      <i class="fas fa-rocket"></i> BUY ON PUMP.FUN
-    </a>
-    <div class="qr-code">
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://pump.fun" alt="QR Code">
-      <p>Scan to buy on mobile</p>
-    </div>
-  </div>
-  
+  <a class="button" href="#">Buy on Pump.fun</a>
   <img src="https://media.tenor.com/Ib7xD3DZ16UAAAAC/troll-trollface.gif" alt="Troll Meme Gif" class="meme">
 </div>
 
@@ -272,17 +176,13 @@
 
 <div class="section contract-box">
   <h2>Contract Address</h2>
-  <p>CA: <code id="contract-address">Loading contract address...</code></p>
-  <button onclick="copyContractAddress()" class="button">
-    <i class="fas fa-copy"></i> Copy Address
-  </button>
-</div>
-
+  <p>CA: will be updated soon</p>
+  
 <div class="section faq">
   <h2>FAQ</h2>
-  <p><strong>What is TrollGPT?</strong><br>It's a meme coin with no real utility other than chaos and fun. Buy at your own risk!</p>
+  <p><strong>What is TrollGPT?</strong><br>It’s a meme coin with no real utility other than chaos and fun. Buy at your own risk!</p>
   <p><strong>How do I buy $TrollGPT?</strong><br>You can buy it on Pump.fun and other exchanges once it's listed!</p>
-  <p><strong>Why 0% tax?</strong><br>Because we don't care. Just hold, watch the memes, and YOLO.</p>
+  <p><strong>Why 0% tax?</strong><br>Because we don’t care. Just hold, watch the memes, and YOLO.</p>
 </div>
 
 <div class="section">
@@ -291,7 +191,7 @@
      ✅ Twitter spam<br>
      ✅ AI Bot that screams "BUY" randomly<br>
      ⏳ Meme domination<br>
-     ⏳ AI staking (but it's fake)</p>
+     ⏳ AI staking (but it’s fake)</p>
 </div>
 
 <div class="section">
@@ -304,24 +204,24 @@
   <h2 style="color: #ffffff;">TrollGPT Core Wisdom</h2>
   <div style="text-align: left; max-width: 700px; margin: 0 auto;">
     <p><strong style="color: #ffffff;">"If you can't troll, just call it cringe.</strong> <span style="color: #00ff88;">Classic grapes-are-sour behavior."</span></p>
-    <p><strong style="color: #ffffff;">"They hate what they don't understand</strong> <span style="color: #00ff88;">— or what claps back harder."</span></p>
-    <p><strong style="color: #ffffff;">"Calling it dumb doesn't make you smart.</strong> <span style="color: #00ff88;">Cope harder."</span></p>
-    <p><strong style="color: #ffffff;">"It's always 'this isn't funny'</strong> <span style="color: #00ff88;">from people who can't meme."</span></p>
-    <p><strong style="color: #ffffff;">"Skill issue?</strong> <span style="color: #00ff88;">Or just jealous you're not this chaotic?"</span></p>
-    <p><strong style="color: #ffffff;">"If you don't get it,</strong> <span style="color: #00ff88;">maybe it's above your IQ pay grade."</span></p>
+    <p><strong style="color: #ffffff;">"They hate what they don’t understand</strong> <span style="color: #00ff88;">— or what claps back harder."</span></p>
+    <p><strong style="color: #ffffff;">"Calling it dumb doesn’t make you smart.</strong> <span style="color: #00ff88;">Cope harder."</span></p>
+    <p><strong style="color: #ffffff;">"It’s always ‘this isn’t funny’</strong> <span style="color: #00ff88;">from people who can’t meme."</span></p>
+    <p><strong style="color: #ffffff;">"Skill issue?</strong> <span style="color: #00ff88;">Or just jealous you’re not this chaotic?"</span></p>
+    <p><strong style="color: #ffffff;">"If you don’t get it,</strong> <span style="color: #00ff88;">maybe it’s above your IQ pay grade."</span></p>
     <p><strong style="color: #ffffff;">"The weak fear the troll.</strong> <span style="color: #00ff88;">The strong become it."</span></p>
-    <p><strong style="color: #ffffff;">"He who can't cook</strong> <span style="color: #00ff88;">throws shade at the recipe."</span></p>
-    <p><strong style="color: #ffffff;">"You're not mad 'cause it's dumb.</strong> <span style="color: #00ff88;">You're mad 'cause it hit a nerve."</span></p>
+    <p><strong style="color: #ffffff;">"He who can’t cook</strong> <span style="color: #00ff88;">throws shade at the recipe."</span></p>
+    <p><strong style="color: #ffffff;">"You’re not mad ‘cause it’s dumb.</strong> <span style="color: #00ff88;">You’re mad ‘cause it hit a nerve."</span></p>
     <p><strong style="color: #ffffff;">"Every hater is just a fan in denial</strong> <span style="color: #00ff88;">with no meme skills."</span></p>
     <p><strong style="color: #ffffff;">"You said it's childish,</strong> <span style="color: #00ff88;">but laughed 2 seconds later. Checkmate."</span></p>
     <p><strong style="color: #ffffff;">"Mock the art if you must,</strong> <span style="color: #00ff88;">but we both know you can't draw like this."</span></p>
-    <p><strong style="color: #ffffff;">"Trolls aren't born.</strong> <span style="color: #00ff88;">They're built — in the shadows of your self-doubt."</span></p>
+    <p><strong style="color: #ffffff;">"Trolls aren’t born.</strong> <span style="color: #00ff88;">They’re built — in the shadows of your self-doubt."</span></p>
     <p><strong style="color: #ffffff;">"Only boring minds</strong> <span style="color: #00ff88;">find chaos disturbing."</span></p>
     <p><strong style="color: #ffffff;">"If trolling is an art,</strong> <span style="color: #00ff88;">you're still finger-painting."</span></p>
-    <p><strong style="color: #ffffff;">"Can't handle the heat?</strong> <span style="color: #00ff88;">Stay off the meme kitchen."</span></p>
-    <p><strong style="color: #ffffff;">"You don't hate trolling.</strong> <span style="color: #00ff88;">You hate not being this good at it."</span></p>
+    <p><strong style="color: #ffffff;">"Can’t handle the heat?</strong> <span style="color: #00ff88;">Stay off the meme kitchen."</span></p>
+    <p><strong style="color: #ffffff;">"You don’t hate trolling.</strong> <span style="color: #00ff88;">You hate not being this good at it."</span></p>
     <p><strong style="color: #ffffff;">"Call it nonsense,</strong> <span style="color: #00ff88;">but deep down, you're just mad it makes sense."</span></p>
-    <p><strong style="color: #ffffff;">"Behind every triggered reaction</strong> <span style="color: #00ff88;">is a truth you couldn't dodge."</span></p>
+    <p><strong style="color: #ffffff;">"Behind every triggered reaction</strong> <span style="color: #00ff88;">is a truth you couldn’t dodge."</span></p>
     <p><strong style="color: #ffffff;">"They call it trolling.</strong> <span style="color: #00ff88;">I call it soul-searching… aggressively."</span></p>
   </div>
   <div style="margin-top: 30px; text-align: center;">
@@ -340,28 +240,27 @@
 <div id="connect-modal">
   <div class="modal-content">
     <p><strong>🧠... Nice try bozo.</strong>
-    <br>Never connect your wallet to random meme sites — unless it's this one.
+    <br>Never connect your wallet to random meme sites — unless it’s this one.
     <br>Then do it twice.</p>
     <button onclick="closeModal()">Alright fam</button>
   </div>
 </div>
 
 <script>
-  // Chat functionality
   const chatLog = document.getElementById('chat-log');
   const chatInput = document.getElementById('chat-input');
 
   const responses = [
     "BUY THE DIP YOU COWARD.",
     "You think too much. Just ape.",
-    "That's bullish. Maybe. Probably not.",
+    "That’s bullish. Maybe. Probably not.",
     "SELL EVERYTHING.Even your fridge.",
     "Wait… I had a thought… Never mind.",
     "YOLO or NGMI — your choice.",
-    "You think you're early? You're not.",
+    "You think you’re early? You’re not.",
     "I saw this in a dream. 10x incoming.",
-    "Delete your portfolio. It's cursed.",
-    "Don't trust me. I'm literally coded in a meme."
+    "Delete your portfolio. It’s cursed.",
+    "Don’t trust me. I’m literally coded in a meme."
   ];
 
   chatInput.addEventListener('keydown', function (e) {
@@ -371,73 +270,18 @@
       chatInput.value = '';
       setTimeout(() => {
         const botReply = responses[Math.floor(Math.random() * responses.length)];
-        chatLog.innerHTML += `<p><strong>TrollGPT:</strong> ${botReply}</p>`;
+        chatLog.innerHTML += `<p><strong>AIBO:</strong> ${botReply}</p>`;
         chatLog.scrollTop = chatLog.scrollHeight;
       }, 800);
     }
   });
 
-  // Wallet connection
-  async function connectWallet() {
-    if (window.solana) {
-      try {
-        const resp = await window.solana.connect();
-        const publicKey = resp.publicKey.toString();
-        document.querySelector('.connect-btn').innerHTML = 
-          `<i class="fa-brands fa-phantom"></i> ${publicKey.slice(0,4)}...${publicKey.slice(-4)}`;
-          
-        // Show success message
-        const chatLog = document.getElementById('chat-log');
-        chatLog.innerHTML += `<p><strong>System:</strong> Wallet connected! Ready to troll.</p>`;
-        chatLog.scrollTop = chatLog.scrollHeight;
-      } catch (err) {
-        console.error("User rejected request");
-      }
-    } else {
-      window.open("https://phantom.app/", "_blank");
-    }
+  function openModal() {
+    document.getElementById('connect-modal').style.display = 'block';
   }
-
-  // Simulate holder count (replace with real API call)
-  function updateHolderCount() {
-    const baseCount = Math.floor(Math.random() * 1000) + 500;
-    const growthRate = 1 + (Math.random() * 0.1);
-    let count = Math.floor(baseCount * growthRate);
-    
-    // Make sure count is always increasing
-    const lastCount = parseInt(document.getElementById('holder-count').textContent) || 0;
-    if (count < lastCount) count = lastCount + Math.floor(Math.random() * 10);
-    
-    document.getElementById('holder-count').textContent = count.toLocaleString();
-    
-    // Update every 5-10 seconds
-    setTimeout(updateHolderCount, 5000 + Math.random() * 5000);
+  function closeModal() {
+    document.getElementById('connect-modal').style.display = 'none';
   }
-
-  // Set contract address (replace with your actual contract address)
-  function setContractAddress() {
-    const contractAddress = "TRGPT..."; // Replace with your actual contract address
-    document.getElementById('contract-address').textContent = contractAddress;
-  }
-
-  // Copy contract address
-  function copyContractAddress() {
-    const contractAddress = document.getElementById('contract-address').textContent;
-    navigator.clipboard.writeText(contractAddress).then(() => {
-      alert("Contract address copied to clipboard!");
-    });
-  }
-
-  // Initialize
-  window.onload = function() {
-    updateHolderCount();
-    setContractAddress();
-    
-    // Add some initial chat messages
-    setTimeout(() => {
-      chatLog.innerHTML += `<p><strong>TrollGpt:</strong> Welcome degens. Ready to lose money?</p>`;
-    }, 1000);
-  };
 </script>
 
 </body>
